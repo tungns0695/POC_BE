@@ -1,0 +1,8 @@
+    steps:
+    - name: 'gcr.io/cloud-builders/docker'
+      args: [ 'build', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/poc:$COMMIT_SHA', '.' ]
+    - name: 'gcr.io/cloud-builders/docker'
+      args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/poc:$COMMIT_SHA']
+    logsBucket: 'gs://poc_build_log'
+    options:
+      logging: GCS_ONLY
